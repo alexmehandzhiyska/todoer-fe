@@ -1,0 +1,44 @@
+#sidebar {
+    padding-top: 3em;
+    min-width: 20%;
+    min-height: 100vh;
+    background: var(--gray);
+}
+
+#sidebar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
+    font-weight: bold;
+}
+
+#sidebar li {
+    text-transform: capitalize;
+    margin: 7px 0;
+}
+
+.sidebar-icon {
+    margin-right: 12px;
+    width: 18px;
+}
+
+#inbox-icon {
+    color: #1cb0f8;
+}
+
+#star-icon {
+    color: #ffd303;
+}
+
+#calendar-icon {
+    color: #fe306b;
+}
+
+#layers-icon {
+    color: #37a49b;
+}
+
+#archive-icon {
+    color: #bcb06e;
+}
