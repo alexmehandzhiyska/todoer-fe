@@ -1,5 +1,7 @@
 :root {
-    --gray: #f5f6f8;
+    --black: #363a3d;
+    --light-gray: #f5f6f8;
+    --dark-gray: #c3c7cd;
 }
 
 body {

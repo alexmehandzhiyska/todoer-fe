@@ -2,7 +2,8 @@
     padding-top: 3em;
     min-width: 20%;
     min-height: 100vh;
-    background: var(--gray);
+    color: var(--black);
+    background: var(--light-gray);
 }
 
 #sidebar ul {
@@ -18,7 +19,7 @@
     margin: 7px 0;
 }
 
-.sidebar-icon {
+.icon {
     margin-right: 12px;
     width: 18px;
 }
@@ -41,4 +42,21 @@
 
 #archive-icon {
     color: #bcb06e;
+}
+
+.areas {
+    text-align: left;
+    margin-top: 4em;
+}
+
+.area-icon,
+.category-icon {
+    color: var(--dark-gray);
+}
+
+.categories {
+    font-weight: normal !important;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    padding: 0;
 }

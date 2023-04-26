@@ -1,40 +1,47 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInbox, faStar, faCalendar, faLayerGroup, faBoxArchive } from '@fortawesome/free-solid-svg-icons';
+import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
+import { areaService } from '../../services/areaService';
+import TimeCategories from './TimeCategories/TimeCategories';
 import './Sidebar.css';
 
 const Sidebar = () => {
-    const navigate = useNavigate();
+    const [areas, setAreas] = useState([]);
+
+    useEffect(() => {
+        areaService.getAll()
+            .then((res) => {
+                setAreas(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     return (
         <section id="sidebar">
-            <ul>
-                <li onClick={() => navigate(`/tasks`)}>
-                    <FontAwesomeIcon icon={faInbox} className="sidebar-icon" id="inbox-icon"></FontAwesomeIcon>
-                    <span>inbox</span>
-                </li>
+            <TimeCategories></TimeCategories>
 
-                <li onClick={() => navigate(`/tasks?day=today`)}>
-                    <FontAwesomeIcon icon={faStar} className="sidebar-icon" id="star-icon"></FontAwesomeIcon>
-                    <span>today</span>
-                </li>
+            {areas && (
+                <ul className="areas">
+                    {areas.map(area => 
+                        <li>
+                            <FontAwesomeIcon icon={faFolder} className="area-icon icon"></FontAwesomeIcon>
+                            <span>{area.name}</span>
 
-                <li onClick={() => navigate(`/tasks?day=tomorrow`)}>
-                    <FontAwesomeIcon icon={faCalendar} className="sidebar-icon" id="calendar-icon"></FontAwesomeIcon>
-                    <span>tomorrow</span>
-                </li>
-                
-                <li onClick={() => navigate(`/tasks`)}>
-                    <FontAwesomeIcon icon={faLayerGroup} className="sidebar-icon" id="layers-icon"></FontAwesomeIcon>
-                    <span>upcoming</span>
-                </li>
-
-                <li onClick={() => navigate(`/tasks`)}>
-                    <FontAwesomeIcon icon={faBoxArchive} className="sidebar-icon" id="archive-icon"></FontAwesomeIcon>
-                    <span>anytime</span>
-                </li>
-            </ul>
+                            <ul className="categories">
+                                {area.categories.map(category => 
+                                    <li>
+                                        <FontAwesomeIcon icon={faCircleNotch} className="category-icon icon"></FontAwesomeIcon>
+                                        <span>{category.name}</span>
+                                    </li>
+                                )}
+                            </ul>
+                        </li>
+                    )}
+                </ul>
+            )}
         </section>
     );
 };
