@@ -1,12 +1,16 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 import './CreateList.css';
+import { AreaContext } from '../../contexts/areaContext';
 import { areaService } from '../../services/areaService';
+import { categoryService } from '../../services/categoryService';
 
 const CreateList = () => {
+    const { addArea, addCategory } = useContext(AreaContext);
+    
     const { state } = useLocation();
     const listType = state.listType;
 
@@ -16,7 +20,15 @@ const CreateList = () => {
         if (listType === 'area') {
             areaService.create(listName)
                 .then(res => {
-                    console.log(res);
+                    addArea(res);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        } else {
+            categoryService.create(listName)
+                .then(res => {
+                    addCategory(res);
                 })
                 .catch(err => {
                     console.log(err);

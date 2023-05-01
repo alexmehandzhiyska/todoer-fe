@@ -1,32 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
-import { areaService } from '../../services/areaService';
+import { AreaContext } from '../../contexts/areaContext';
 import TimeCategories from './TimeCategories/TimeCategories';
 import './Sidebar.css';
 
 const Sidebar = () => {
     const navigate = useNavigate();
 
-    const [areas, setAreas] = useState([]);
     const [newListIsToggled, setNewListIsToggled] = useState(false);
 
-    useEffect(() => {
-        areaService.getAll()
-            .then((res) => {
-                setAreas(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    const { areas } = useContext(AreaContext);
 
     const showCreateList = (listType) => {
         setNewListIsToggled(false);
         navigate(`/create`, { state: { listType }});
-    }
+    };
 
     return (
         <section id="sidebar">
