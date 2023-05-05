@@ -62,7 +62,7 @@ const TaskCreateCard = ({ pageRef }) => {
                 </select>
             </form>
 
-            <article className="task-settings">
+            <article className="task-options">
                 <FontAwesomeIcon icon={faStar} className="icon star-icon" onClick={() => setIsImportant(!isImportant)}></FontAwesomeIcon>
                 <FontAwesomeIcon icon={faBell} className="icon bell-icon" onClick={() => setIsUrgent(!isUrgent)}></FontAwesomeIcon>
             </article>

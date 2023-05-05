@@ -30,6 +30,18 @@ const create = async (task) => {
     }
 
     return data;
-}
+};
 
-export const taskService = { getAll, create };
+const deleteOne = async (taskId) => {
+    const response = await fetch(`${baseUrl}/tasks/${taskId}`, {
+        method: 'DELETE'
+    });
+
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+
+    return 'success';
+};
+
+export const taskService = { getAll, create, deleteOne };
