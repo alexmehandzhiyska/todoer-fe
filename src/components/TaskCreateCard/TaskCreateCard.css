@@ -1,0 +1,50 @@
+.task-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    width: 45vw;
+    margin-top: 3em;
+    box-shadow: -1px -1px 5px 5px rgba(223,224,224,0.75);
+}
+
+.task-form {
+    padding: 1em;
+    width: 95%;
+}
+
+.task-form input,
+.task-form textarea {
+    font-family: -apple-system, BlinkMacSystemFont;
+    width: 95%;
+    margin: 1em;
+    border: none;
+}
+
+.task-form input:focus,
+.task-form textarea:focus {
+    outline: none;
+    caret-color: var(--blue);
+}
+
+.task-form textarea::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont;
+}
+
+.task-description {
+    resize: none;
+    height: 80px;
+}
+
+.task-settings {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    font-size: 1.25rem;
+    padding: 0 10px 10px 0;
+}
+
+.bell-icon {
+    color: #858585;
+}

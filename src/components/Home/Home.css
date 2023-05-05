@@ -1,0 +1,25 @@
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 93vh;
+    min-width: 85vw;
+}
+
+.home-title-wrapper {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.home-title {
+    text-transform: capitalize;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}

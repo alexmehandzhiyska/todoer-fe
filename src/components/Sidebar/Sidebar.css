@@ -2,11 +2,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-width: 20%;
+    min-width: 15%;
     min-height: 95vh;
     padding-top: 3em;
     color: var(--black);
     background: var(--light-gray);
+    border-right: 1px solid #E9E9E9;
 }
 
 #sidebar-content ul {
@@ -30,24 +31,20 @@
     width: 18px;
 }
 
-#inbox-icon {
+.inbox-icon {
     color: #1cb0f8;
 }
 
-#star-icon {
+.star-icon {
     color: #ffd303;
 }
 
-#calendar-icon {
+.calendar-icon {
     color: #fe306b;
 }
 
-#layers-icon {
+.layers-icon {
     color: #37a49b;
-}
-
-#archive-icon {
-    color: #bcb06e;
 }
 
 .areas {

@@ -7,6 +7,8 @@ const areaReducer = (state, action) => {
     switch (action.type) {
         case 'LOAD_AREAS':
             return action.payload;
+        case 'LOAD_CATEGORIES':
+            return action.payload;
         case 'ADD_AREA':
             return [...state, action.payload];
         case 'ADD_CATEGORY':

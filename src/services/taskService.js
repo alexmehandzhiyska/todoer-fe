@@ -15,7 +15,6 @@ const getAll = async (day) => {
 };
 
 const create = async (task) => {
-    console.log(task);
     const response = await fetch(`${baseUrl}/tasks`, {
         method: 'POST',
         headers: {

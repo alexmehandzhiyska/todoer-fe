@@ -1,13 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { taskService } from '../../services/taskService';
+import { categoryIcons } from '../../constants';
+import TaskCreateCard from '../TaskCreateCard/TaskCreateCard';
+import TaskCard from '../TaskCard/TaskCard';
+import './Home.css';
 
 const Home = () => {
     const [tasks, setTasks] = useState([]);
+    const [activeTaskId, setActiveTaskId] = useState(0);
     const [newCardAdded, setNewCardAdded] = useState(false);
 
     const [searchParams] = useSearchParams();
-    const day = searchParams.has('day') ? searchParams.get('day') : 'today';
+    const day = searchParams.has('day') ? searchParams.get('day') : 'inbox';
+
+    const pageRef = useRef(null);
 
     useEffect(() => {
         taskService.getAll(day)
@@ -19,34 +28,25 @@ const Home = () => {
             });
     }, [day]);
 
-    const createTask = (event) => {
-        event.preventDefault();
-
-        const task = new FormData(event.target);
-        const taskTitle = task.get('task-title');
-        const taskDesc = task.get('task-desc');
-
-        taskService.create({title: taskTitle, description: taskDesc})
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
     return (
-        <section>
-            <h1>Home</h1>
-            {tasks && tasks.map(task => <p key={task.id}>{task.title}</p>)}
-            {newCardAdded && (
-                <form onSubmit={e => createTask(e)}>
-                    <input className="task-title" id="task-title" name="task-title" />
-                    <input className="task-desc" id="task-desc" name="task-desc" />
-                    <input type="submit" value="Submit" />
-                </form>
-            )}
-            <p onClick={() => setNewCardAdded(true)}>+</p>
+        <section className="home-wrapper" ref={pageRef}>
+            <article className="home-content">
+                <section className="home-title-wrapper">
+                    <FontAwesomeIcon icon={categoryIcons[day].icon} style={{ color: categoryIcons[day].color }} className="icon"></FontAwesomeIcon>
+                    <h1 className="home-title">{day}</h1>
+                </section>
+
+                {tasks && 
+                    <section className="tasks">
+                        {tasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId}></TaskCard>)}
+                    </section>
+                }
+                {newCardAdded && <TaskCreateCard pageRef={pageRef} />}
+            </article>
+            
+            <article id="home-settings">
+                <p onClick={() => setNewCardAdded(true)}>+</p>
+            </article>
         </section>
     );
 };

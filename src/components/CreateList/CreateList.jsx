@@ -37,8 +37,8 @@ const CreateList = () => {
     };
 
     return (
-        <section id="create-wrapper">
-            <form id="create-form">
+        <section className="create-wrapper">
+            <form className="create-form">
                 <FontAwesomeIcon icon={listType === 'area' ? faFolder : faCircleNotch} className="icon added-list-icon"></FontAwesomeIcon>
                 <input placeholder={`Create ${listType}`} onChange={(e) => setListName(e.target.value)} onBlur={() => createList()} />
             </form>

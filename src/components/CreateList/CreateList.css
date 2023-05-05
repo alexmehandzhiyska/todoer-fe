@@ -1,12 +1,12 @@
-#create-wrapper {
+.create-wrapper {
     margin-top: 3em;
 }
 
-#create-form {
+.create-form {
     font-size: 2rem;
 }
 
-#create-form input {
+.create-form input {
     font-size: 2rem;
     border: none;
     outline: none;
