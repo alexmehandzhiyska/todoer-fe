@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faBell } from '@fortawesome/free-solid-svg-icons';
 
-import { taskService } from '../../services/taskService';
-import { CategoryContext } from '../../contexts/categoryContext';
-import './TaskCreateCard.css';
+import { taskService } from '../../../services/taskService';
+import { CategoryContext } from '../../../contexts/categoryContext';
+import './TaskFormCard.css';
 
-const TaskCreateCard = ({ pageRef }) => {
+const TaskFormCard = ({ pageRef, task }) => {
     const navigate = useNavigate();
     const { categories } = useContext(CategoryContext);
 
@@ -18,21 +18,31 @@ const TaskCreateCard = ({ pageRef }) => {
     const [isImportant, setIsImportant] = useState(false);
     const [isUrgent, setIsUrgent] = useState(false);
 
-    const createTask = useCallback(() => {
+    const taskHandler = useCallback(() => {
         if (titleRef.current && descriptionRef.current) {
             const title = titleRef.current.value;
             const description = descriptionRef.current.value;
             const category = categoryRef.current.value;
 
-            taskService.create({ title, description, category, isUrgent, isImportant })
-                .then(() => {
-                    navigate('/');
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+            if (task) {
+                taskService.updateOne({ id: task.id, title, description, category, isUrgent, isImportant })
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            } else {
+                taskService.create({ title, description, category, isUrgent, isImportant })
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
         }
-    }, [isImportant, isUrgent, navigate]);
+    }, [isImportant, isUrgent, task, navigate]);
 
     useEffect(() => {
         const currentRef = pageRef.current;
@@ -41,7 +51,7 @@ const TaskCreateCard = ({ pageRef }) => {
             const formTags = ['INPUT', 'FORM', 'TEXTAREA', 'path', 'svg', 'OPTION', 'SELECT'];
             
             if (!formTags.includes(e.target.tagName)) {
-                createTask();
+                taskHandler();
             }
         };
         
@@ -50,14 +60,14 @@ const TaskCreateCard = ({ pageRef }) => {
         return () => {
                 currentRef.removeEventListener('click', handlePageClick);
         };
-    }, [createTask, pageRef]);
+    }, [taskHandler, pageRef]);
 
     return (
         <section className="task-form-wrapper">
             <form className="task-form">
-                <input className="task-title" name="task-title" placeholder="New To-Do" ref={titleRef}/>
-                <textarea className="task-description" name="task-description" placeholder="Notes" ref={descriptionRef} ></textarea>
-                <select ref={categoryRef}>
+                <input className="task-title" name="task-title" placeholder="New To-Do" ref={titleRef} defaultValue={task ? task.title : ''} />
+                <textarea className="task-description" name="task-description" placeholder="Notes" ref={descriptionRef} defaultValue={task ? task.description : ''}></textarea>
+                <select ref={categoryRef} defaultValue={task ? task.category : ''}>
                     {categories.map(category => <option key={category.id}>{category.name}</option>)}
                 </select>
             </form>
@@ -70,4 +80,4 @@ const TaskCreateCard = ({ pageRef }) => {
     );
 };
 
-export default TaskCreateCard;
+export default TaskFormCard;

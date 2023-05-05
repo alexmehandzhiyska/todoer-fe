@@ -46,10 +46,10 @@ export const AreaProvider = ({ children }) => {
     };
 
     const addCategory = (category) => {
-        const currentArea = areas.find(area => area.id == category.areaId);
+        const currentArea = areas.find(area => area.id === category.areaId);
         currentArea.categories = [...currentArea.categories, category];
 
-        const otherAreas = areas.filter(area => area.id != category.areaId);
+        const otherAreas = areas.filter(area => area.id !== category.areaId);
 
         let updatedAreas = [...otherAreas, currentArea].sort((a, b) => a.id - b.id);
 

@@ -4,11 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { taskService } from '../../services/taskService';
 import { categoryIcons } from '../../constants';
-import TaskCreateCard from '../TaskCreateCard/TaskCreateCard';
-import TaskCard from '../TaskCard/TaskCard';
-import './Home.css';
+import TaskFormCard from './TaskFormCard/TaskFormCard';
+import TaskCard from './TaskCard/TaskCard';
+import './Tasks.css';
 
-const Home = () => {
+const Tasks = () => {
     const [tasks, setTasks] = useState([]);
     const [activeTaskId, setActiveTaskId] = useState(0);
     const [newCardAdded, setNewCardAdded] = useState(false);
@@ -38,10 +38,10 @@ const Home = () => {
 
                 {tasks && 
                     <section className="tasks">
-                        {tasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId}></TaskCard>)}
+                        {tasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
                     </section>
                 }
-                {newCardAdded && <TaskCreateCard pageRef={pageRef} />}
+                {newCardAdded && <TaskFormCard pageRef={pageRef} />}
             </article>
             
             <article id="home-settings">
@@ -51,4 +51,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default Tasks;

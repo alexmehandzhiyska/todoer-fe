@@ -2,7 +2,7 @@ import './App.css';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
 import CreateList from './components/CreateList/CreateList';
-import Home from './components/Home/Home';
+import Tasks from './components/Tasks/Tasks';
 import Layout from './components/Layout/Layout';
 
 import { AreaProvider } from './contexts/areaContext';
@@ -22,8 +22,8 @@ function App() {
                         <Layout>
                             <Routes>
                                 <Route path="/" element={<Navigate to="/tasks" />} />
-                                <Route path="/tasks" element={<Home />} />
                                 <Route path="/create" element={<CreateList />} />
+                                <Route path="/tasks" element={<Tasks />} />
                             </Routes>
                         </Layout>
                     </CategoryProvider>
