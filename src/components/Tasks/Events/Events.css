@@ -1,0 +1,38 @@
+.events {
+    margin-top: 2em;
+    width: 53vw;
+}
+
+.event-time {
+    width: 10%;
+}
+
+.events tbody {
+    text-align: left;
+    background: #f0f1f1;
+}
+
+.events td {
+    padding-left: 1em;
+    font-size: 0.9rem;
+    white-space:nowrap;
+}
+
+.events tr:first-child td {
+    padding-top: 1em;
+}
+
+.events tr:last-child td {
+    padding-bottom: 1em;
+}
+
+.events,
+.events tr,
+.events td {
+    border: none;
+    border-collapse: collapse;
+}
+
+.event-time {
+    color: #808080;
+}

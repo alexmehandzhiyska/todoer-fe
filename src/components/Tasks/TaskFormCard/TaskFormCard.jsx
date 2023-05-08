@@ -1,15 +1,21 @@
-import { useRef, useState, useEffect, useContext, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRef, useState, useEffect, useContext } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faBell } from '@fortawesome/free-solid-svg-icons';
 
 import { taskService } from '../../../services/taskService';
 import { CategoryContext } from '../../../contexts/categoryContext';
+import { TaskContext } from '../../../contexts/taskContext';
 import './TaskFormCard.css';
 
-const TaskFormCard = ({ pageRef, task }) => {
+const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
     const navigate = useNavigate();
+
+    const [searchParams] = useSearchParams();
+    const day = searchParams.has('day') ? searchParams.get('day') : 'inbox';
+
     const { categories } = useContext(CategoryContext);
+    const { addTask, editTask } = useContext(TaskContext);
 
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
@@ -18,7 +24,7 @@ const TaskFormCard = ({ pageRef, task }) => {
     const [isImportant, setIsImportant] = useState(false);
     const [isUrgent, setIsUrgent] = useState(false);
 
-    const taskHandler = useCallback(() => {
+    const taskHandler = () => {
         if (titleRef.current && descriptionRef.current) {
             const title = titleRef.current.value;
             const description = descriptionRef.current.value;
@@ -26,23 +32,25 @@ const TaskFormCard = ({ pageRef, task }) => {
 
             if (task) {
                 taskService.updateOne({ id: task.id, title, description, category, isUrgent, isImportant })
-                    .then(() => {
-                        navigate('/');
+                    .then((res) => {
+                        setDetailsOpened(false);
+                        editTask(res, day, category)
                     })
                     .catch(err => {
                         console.log(err);
                     });
             } else {
                 taskService.create({ title, description, category, isUrgent, isImportant })
-                    .then(() => {
-                        navigate('/');
+                    .then((res) => {
+                        setDetailsOpened(false);
+                        addTask(res, day, category);
                     })
                     .catch(err => {
                         console.log(err);
                     });
             }
         }
-    }, [isImportant, isUrgent, task, navigate]);
+    };
 
     useEffect(() => {
         const currentRef = pageRef.current;
