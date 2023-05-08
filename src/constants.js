@@ -22,8 +22,3 @@ export const categoryIcons = {
         query: ''
     }
 };
-
-export const gcalCredentials = {
-    apiKey: "AIzaSyDX0I2uVOFpzzKkv691IEA1DWMVP6Ld0Qw",
-    calendarId: "alexandrina.mehandzhiyska1@gmail.com"
-};

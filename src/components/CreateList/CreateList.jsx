@@ -28,6 +28,7 @@ const CreateList = () => {
         } else {
             categoryService.create(listName)
                 .then(res => {
+                    console.log(res);
                     addCategory(res);
                 })
                 .catch(err => {

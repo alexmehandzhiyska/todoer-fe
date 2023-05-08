@@ -66,7 +66,7 @@ const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
         currentRef.addEventListener('click', handlePageClick);
 
         return () => {
-                currentRef.removeEventListener('click', handlePageClick);
+            currentRef.removeEventListener('click', handlePageClick);
         };
     }, [taskHandler, pageRef]);
 
