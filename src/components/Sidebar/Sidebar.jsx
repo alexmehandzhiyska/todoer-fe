@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 import { AreaContext } from '../../contexts/areaContext';
+import { CategoryContext } from '../../contexts/categoryContext';
 import TimeCategories from './TimeCategories/TimeCategories';
 import './Sidebar.css';
 
@@ -13,6 +14,7 @@ const Sidebar = () => {
     const [newListIsToggled, setNewListIsToggled] = useState(false);
 
     const { areas } = useContext(AreaContext);
+    const { categories } = useContext(CategoryContext);
 
     const showCreateList = (listType) => {
         setNewListIsToggled(false);
@@ -32,7 +34,7 @@ const Sidebar = () => {
                                 <span>{area.name}</span>
 
                                 <ul className="categories">
-                                    {area.categories.map(category => 
+                                    {categories.filter(category => category.areaId === area.id).map(category => 
                                         <li key={category.id}>
                                             <FontAwesomeIcon icon={faCircleNotch} className="icon sidebar-icon category-icon"></FontAwesomeIcon>
                                             <span>{category.name}</span>

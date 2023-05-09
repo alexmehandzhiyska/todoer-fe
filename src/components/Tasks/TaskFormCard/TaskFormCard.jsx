@@ -9,8 +9,6 @@ import { TaskContext } from '../../../contexts/taskContext';
 import './TaskFormCard.css';
 
 const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
-    const navigate = useNavigate();
-
     const [searchParams] = useSearchParams();
     const day = searchParams.has('day') ? searchParams.get('day') : 'inbox';
 

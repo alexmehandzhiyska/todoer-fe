@@ -1,8 +1,15 @@
 .create-wrapper {
-    margin-top: 3em;
+    width: 100vw;
+    height: 85vh;
+    padding: 4.20em 7em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .create-form {
+    display: flex;
+    align-items: center;
     font-size: 2rem;
 }
 
@@ -11,8 +18,18 @@
     border: none;
     outline: none;
     caret-color: var(--blue);
+    font-weight: bolder;
 }
 
 .added-list-icon {
     color: var(--blue);
+}
+
+.add-task-instructions {
+    color: var(--dark-gray);
+    height: 80vh;
+    display: flex;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
 }

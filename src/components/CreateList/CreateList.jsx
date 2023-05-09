@@ -5,11 +5,13 @@ import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 import './CreateList.css';
 import { AreaContext } from '../../contexts/areaContext';
+import { CategoryContext } from '../../contexts/categoryContext';
 import { areaService } from '../../services/areaService';
 import { categoryService } from '../../services/categoryService';
 
 const CreateList = () => {
-    const { addArea, addCategory } = useContext(AreaContext);
+    const { addArea } = useContext(AreaContext);
+    const { addCategory } = useContext(CategoryContext);
     
     const { state } = useLocation();
     const listType = state.listType;
@@ -28,7 +30,6 @@ const CreateList = () => {
         } else {
             categoryService.create(listName)
                 .then(res => {
-                    console.log(res);
                     addCategory(res);
                 })
                 .catch(err => {
@@ -43,6 +44,10 @@ const CreateList = () => {
                 <FontAwesomeIcon icon={listType === 'area' ? faFolder : faCircleNotch} className="icon added-list-icon"></FontAwesomeIcon>
                 <input placeholder={`Create ${listType}`} onChange={(e) => setListName(e.target.value)} onBlur={() => createList()} />
             </form>
+
+            <article className="add-task-instructions">
+                <p>Press ⌘ + N to create a new to-do.</p>
+            </article>
         </section>
     )
 };

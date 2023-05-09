@@ -42,25 +42,14 @@ export const AreaProvider = ({ children }) => {
             payload: area
         });
 
-        navigate('/');
+        navigate('/tasks?day=inbox');
+
     };
 
-    const addCategory = (category) => {
-        const currentArea = areas.find(area => area.id === category.areaId);
-        currentArea.categories = [...currentArea.categories, category];
-
-        const otherAreas = areas.filter(area => area.id !== category.areaId);
-
-        let updatedAreas = [...otherAreas, currentArea].sort((a, b) => a.id - b.id);
-
-        dispatch({
-            type: 'ADD_CATEGORY',
-            payload: updatedAreas
-        });
-    };
+    
 
     return (
-        <AreaContext.Provider value={{ areas, addArea, addCategory }}>
+        <AreaContext.Provider value={{ areas, addArea }}>
             {children}
         </AreaContext.Provider>
     );
