@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import './TaskCard.css';
 import { taskService } from '../../../services/taskService';
 import { TaskContext } from '../../../contexts/taskContext';
 import TaskFormCard from '../TaskFormCard/TaskFormCard';
+import './TaskCard.css';
 
 const TaskCard = ({ task, activeTaskId, setActiveTaskId, pageRef }) => {
     const { editTask, removeTask } = useContext(TaskContext);
@@ -21,7 +21,7 @@ const TaskCard = ({ task, activeTaskId, setActiveTaskId, pageRef }) => {
 
         taskService.updateOne(task)
             .then((res) => {
-                editTask(task);
+                editTask(res);
             })
             .catch(err => {
                 console.log(err);
@@ -48,10 +48,18 @@ const TaskCard = ({ task, activeTaskId, setActiveTaskId, pageRef }) => {
             {!detailsOpened && 
                 <article className={task.id === activeTaskId ? "task-wrapper task-wrapper-active" : "task-wrapper"} onClick={() => setActiveTaskId(task.id)} onDoubleClick={() => setDetailsOpened(!detailsOpened)}>
                     <section className="task-content">
+                        <article className="is-important-wrapper">
+                            {task.isImportant && <FontAwesomeIcon icon={faStar} className="is-important"></FontAwesomeIcon>}
+                        </article>
+
                         <input type="checkbox" name="completed" id="completed" defaultChecked={task.completed} onClick={changeTaskCompletion} />
                         
                         <article className="task-text">
-                            <p className="task-title">{task.title}</p>
+                            <section className="task-title-tags">
+                                <p className="task-title">{task.title}</p>
+                                {task.isUrgent && <span className="task-tag">Urgent</span>}
+                            </section>
+
                             <p className="task-category">{task.category}</p>
                         </article>
                     </section>

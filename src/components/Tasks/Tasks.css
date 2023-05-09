@@ -17,9 +17,19 @@
     text-transform: capitalize;
 }
 
-.tasks {
+.active-tasks {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
+}
+
+.completed-tasks .task-title {
+    text-decoration: line-through;
+    text-decoration-color: var(--dark-gray);
+}
+
+.completed-tasks input[type="checkbox"] {
+    accent-color: darkblue;
+    color: white;
 }

@@ -48,9 +48,15 @@ const Tasks = () => {
                 </section>
 
                 {tasks && 
-                    <section className="tasks">
-                        {tasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
-                    </section>
+                    <>
+                        <section className="active-tasks">
+                            {tasks.filter(task => task.completed === false).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                        </section>
+                        <hr />
+                        <section className="completed-tasks">
+                            {tasks.filter(task => task.completed === true).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                        </section>
+                    </>
                 }
                 {newCardAdded && <TaskFormCard pageRef={pageRef} setDetailsOpened={setNewCardAdded} />}
             </article>
