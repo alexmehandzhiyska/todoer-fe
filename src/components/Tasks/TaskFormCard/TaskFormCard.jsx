@@ -24,7 +24,7 @@ const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState(categories[0].name);
     const [isImportant, setIsImportant] = useState(false);
     const [isUrgent, setIsUrgent] = useState(false);
     const [dueDate, setDueDate] = useState(null);

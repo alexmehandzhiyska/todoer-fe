@@ -19,6 +19,6 @@ export const categoryIcons = {
     upcoming: {
         icon: 'fa-layer-group',
         color: '#37a49b',
-        query: ''
+        query: '?day=upcoming'
     }
 };

@@ -2,9 +2,10 @@ import { baseUrl } from '../constants';
 import { getDate } from '../utils';
 
 const getAll = async (day) => {
-    const date = getDate(day);
+    let dueDate = getDate(day);
+    dueDate = dueDate === undefined ? day : dueDate;
 
-    const response = await fetch(`${baseUrl}/tasks?due_date=${date}`);
+    const response = await fetch(`${baseUrl}/tasks?due_date=${dueDate}`);
     const data = await response.json();
 
     if (!response.ok) {

@@ -23,7 +23,8 @@ const Tasks = () => {
     const day = searchParams.has('day') ? searchParams.get('day') : 'inbox';
 
     const { tasks } = useContext(TaskContext);
-    let currentTasks = tasks.filter(task => task.completed === false);
+    const activeTasks = tasks.filter(task => task.completed === false);
+    const completedTasks = tasks.filter(task => task.completed === true);
 
     const pageRef = useRef(null);
 
@@ -42,7 +43,6 @@ const Tasks = () => {
         <section className="home-wrapper" ref={pageRef}>
             {!googleToken && <GoogleLogin clientId='781317250288-9r3o4v0to0rmibjr4srcaft1an0fmko2.apps.googleusercontent.com' onSuccess={responseGoogle} cookiePolicy={'single_host_origin'} responseType='code' scope='openid email profile https://www.googleapis.com/auth/calendar' />}
 
-
             <article className="home-content">
                 <Events />
 
@@ -53,21 +53,25 @@ const Tasks = () => {
 
                 {tasks && 
                     <>
-                        {currentTasks.length > 0 && 
+                        {activeTasks.length > 0 && 
                             <section className="active-tasks">
-                                {currentTasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                                {activeTasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
                             </section>
                         }
 
-                        {currentTasks.length === 0 && <p className="text">No tasks waiting to be completed.</p>}
+                        {activeTasks.length === 0 && <p className="text">No tasks waiting to be completed.</p>}
 
                         {newCardAdded && <TaskFormCard pageRef={pageRef} setDetailsOpened={setNewCardAdded} />}
 
-                        <hr />
+                        {completedTasks.length > 0 &&
+                            <>
+                                <hr />
 
-                        <section className="completed-tasks">
-                            {tasks.filter(task => task.completed === true).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
-                        </section>
+                                <section className="completed-tasks">
+                                    {tasks.filter(task => task.completed === true).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                                </section>
+                            </>
+                        }
                     </>
                 }
 
