@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import GoogleLogin from 'react-google-login';
 
+import { TaskContext } from '../../contexts/taskContext';
 import { categoryIcons } from '../../constants';
+
 import TaskFormCard from './TaskFormCard/TaskFormCard';
 import TaskCard from './TaskCard/TaskCard';
-import { TaskContext } from '../../contexts/taskContext';
-import './Tasks.css';
 import eventService from '../../services/eventService';
 import Events from './Events/Events';
+
+import './Tasks.css';
 
 const Tasks = () => {
     const [activeTaskId, setActiveTaskId] = useState(0);
@@ -21,6 +23,7 @@ const Tasks = () => {
     const day = searchParams.has('day') ? searchParams.get('day') : 'inbox';
 
     const { tasks } = useContext(TaskContext);
+    let currentTasks = tasks.filter(task => task.completed === false);
 
     const pageRef = useRef(null);
 
@@ -42,6 +45,7 @@ const Tasks = () => {
 
             <article className="home-content">
                 <Events />
+
                 <section className="home-title-wrapper">
                     <FontAwesomeIcon icon={categoryIcons[day].icon} style={{ color: categoryIcons[day].color }} className="icon"></FontAwesomeIcon>
                     <h1 className="home-title">{day}</h1>
@@ -49,16 +53,24 @@ const Tasks = () => {
 
                 {tasks && 
                     <>
-                        <section className="active-tasks">
-                            {tasks.filter(task => task.completed === false).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
-                        </section>
+                        {currentTasks.length > 0 && 
+                            <section className="active-tasks">
+                                {currentTasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                            </section>
+                        }
+
+                        {currentTasks.length === 0 && <p className="text">No tasks waiting to be completed.</p>}
+
+                        {newCardAdded && <TaskFormCard pageRef={pageRef} setDetailsOpened={setNewCardAdded} />}
+
                         <hr />
+
                         <section className="completed-tasks">
                             {tasks.filter(task => task.completed === true).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
                         </section>
                     </>
                 }
-                {newCardAdded && <TaskFormCard pageRef={pageRef} setDetailsOpened={setNewCardAdded} />}
+
             </article>
             
             <article id="home-settings">
