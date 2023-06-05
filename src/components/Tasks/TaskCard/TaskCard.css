@@ -1,73 +1,60 @@
-.task-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 52vw;
-    padding: 5px;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/* Colors */
+/* Fonts */
+.task, .task-active {
+  display: flex;
+  justify-content: space-between;
+  width: 52vw;
+  padding: 5px;
 }
-
 .task-content {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
-
-.task-wrapper-active {
-    background: #cae2ff;
-    border-radius: 5px;
+.task-content .is-important-wrapper {
+  width: 30px;
 }
-
-.task-text {
-    text-align: left;
-    margin-left: 8px;
+.task-content .is-important-wrapper .is-important {
+  color: #ffc403;
+  margin-right: 5px;
 }
-
-.task-title {
-    font-size: 0.95rem;
-    margin: 0;
+.task-content .task-text {
+  margin-left: 8px;
+  text-align: left;
 }
-
-.task-category {
-    font-size: 0.80rem;
-    margin: 0;
-    color: var(--dark-gray);
+.task-content .task-text .task-title-tags {
+  display: flex;
+  align-items: center;
 }
-
+.task-content .task-text .task-title-tags .task-title {
+  margin: 0;
+  font-size: 0.95rem;
+}
+.task-content .task-text .task-title-tags .task-tag {
+  margin-left: 10px;
+  padding: 0 10px;
+  color: #9B9B9B;
+  border: 1px solid #9B9B9B;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+.task-content .task-text .task-category {
+  margin: 0;
+  color: #9B9B9B;
+  font-size: 0.8rem;
+}
 .task-settings {
-    display: flex;
-    align-items: center;
-    color: var(--dark-gray);
-    padding-right: 10px;
-    transition: 2.5s ease;
+  display: flex;
+  align-items: center;
+  padding-right: 10px;
+  color: #9B9B9B;
+  transition: 2.5s ease;
+}
+.task-settings .delete-icon:hover {
+  color: rgba(245, 33, 33, 0.559);
 }
 
-.delete-icon:hover {
-    color: rgba(245, 33, 33, 0.559);
-}
-
-.task-title-tags {
-    display: flex;
-    align-items: center;
-}
-
-.task-tag {
-    font-size: 0.75rem;
-    color: var(--dark-gray);
-    border: 1px solid var(--dark-gray);
-    border-radius: 10px;
-    margin-left: 10px;
-    padding: 0 10px;
-}
-
-.is-important-wrapper {
-    width: 30px;
-}
-
-.is-important {
-    color: #ffc403;
-    margin-right: 5px;
-}
-
-hr {
-    background: rgb(216, 216, 216);
-    height: 1px;
-    border: none;
-}
+.task-active {
+  background: #cae2ff;
+  border-radius: 5px;
+}/*# sourceMappingURL=TaskCard.css.map */

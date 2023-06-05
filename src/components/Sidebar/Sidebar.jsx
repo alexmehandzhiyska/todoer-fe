@@ -6,6 +6,7 @@ import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { AreaContext } from '../../contexts/areaContext';
 import { CategoryContext } from '../../contexts/categoryContext';
 import TimeCategories from './TimeCategories/TimeCategories';
+
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -22,8 +23,8 @@ const Sidebar = () => {
     };
 
     return (
-        <section id="sidebar">
-            <article id="sidebar-content">
+        <section className="sidebar">
+            <article className="sidebar-content">
                 <TimeCategories></TimeCategories>
 
                 {areas && (
@@ -31,13 +32,13 @@ const Sidebar = () => {
                         {areas.map(area => 
                             <li key={area.id}>
                                 <FontAwesomeIcon icon={faFolder} className="icon sidebar-icon area-icon"></FontAwesomeIcon>
-                                <span>{area.name}</span>
+                                <span className="heading">{area.name}</span>
 
                                 <ul className="categories">
                                     {categories.filter(category => category.areaId === area.id).map(category => 
                                         <li key={category.id}>
                                             <FontAwesomeIcon icon={faCircleNotch} className="icon sidebar-icon category-icon"></FontAwesomeIcon>
-                                            <span>{category.name}</span>
+                                            <span className="heading">{category.name}</span>
                                         </li>
                                     )}
                                 </ul>

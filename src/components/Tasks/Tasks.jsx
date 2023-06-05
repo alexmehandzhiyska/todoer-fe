@@ -46,13 +46,13 @@ const Tasks = () => {
             <article className="home-content">
                 <Events />
 
-                <section className="home-title-wrapper">
+                <section className="title-wrapper">
                     <FontAwesomeIcon icon={categoryIcons[day].icon} style={{ color: categoryIcons[day].color }} className="icon"></FontAwesomeIcon>
-                    <h1 className="home-title">{day}</h1>
+                    <h1 className="title">{day}</h1>
                 </section>
 
                 {tasks && 
-                    <>
+                    <section className="tasks">
                         {activeTasks.length > 0 && 
                             <section className="active-tasks">
                                 {activeTasks.map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
@@ -72,9 +72,8 @@ const Tasks = () => {
                                 </section>
                             </>
                         }
-                    </>
+                    </section>
                 }
-
             </article>
             
             <article id="home-settings">

@@ -86,6 +86,7 @@ const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
             <article className="task-options">
                 <FontAwesomeIcon icon={faStar} className="icon star-icon" onClick={() => setIsImportant(!isImportant)}></FontAwesomeIcon>
                 <FontAwesomeIcon icon={faBell} className="icon bell-icon" onClick={() => setIsUrgent(!isUrgent)}></FontAwesomeIcon>
+
                 <section className="due-date-calendar-wrapper">
                     <DatePicker className="date-picker" open={datePickerOpen} onOpenChange={() => setDatePickerOpen(false)} onSelect={(date) => selectDate(date)} isClearable/>  
                     <FontAwesomeIcon icon={faFlag} className="icon bell-icon" onClick={() => setDatePickerOpen(true)}></FontAwesomeIcon>

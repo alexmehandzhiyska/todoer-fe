@@ -1,129 +1,98 @@
-#sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-width: 15%;
-    min-height: 95vh;
-    padding-top: 3em;
-    color: var(--black);
-    background: var(--light-gray);
-    border-right: 1px solid #E9E9E9;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/* Colors */
+/* Fonts */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3em;
+  color: #363a3d;
+  background-color: #f5f6f8;
+  min-width: 15%;
+  min-height: 95vh;
+  border-right: 1px solid #E9E9E9;
 }
-
-#sidebar-content ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    list-style: none;
-    font-weight: bold;
+.sidebar .sidebar-content ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  list-style: none;
+  font-weight: bold;
 }
-
-#sidebar-content li {
-    text-transform: capitalize;
-    margin: 7px 0;
+.sidebar .sidebar-content ul li {
+  margin: 7px 0;
+  text-transform: capitalize;
 }
-
-.icon {
-    margin-right: 12px;
+.sidebar .sidebar-content .areas {
+  margin-top: 4em;
+  text-align: left;
 }
-
-.sidebar-icon {
-    width: 18px;
+.sidebar .sidebar-content .areas .area-icon,
+.sidebar .sidebar-content .areas .category-icon {
+  color: #9B9B9B;
 }
-
-.inbox-icon {
-    color: #1cb0f8;
+.sidebar .sidebar-content .areas .categories {
+  margin: 10px 0;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: normal !important;
 }
-
-.star-icon {
-    color: #ffd303;
+.sidebar .manage-lists {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
-.calendar-icon {
-    color: #fe306b;
+.sidebar .manage-lists .new-lists {
+  align-self: center;
+  width: 60%;
+  padding: 5px 20px;
+  color: white;
+  background-color: #2c323a;
+  border-radius: 8px;
 }
-
-.layers-icon {
-    color: #37a49b;
+.sidebar .manage-lists .new-lists .new-area,
+.sidebar .manage-lists .new-lists .new-category {
+  display: flex;
+  align-items: center;
+  padding: 10px 3px;
 }
-
-.areas {
-    text-align: left;
-    margin-top: 4em;
+.sidebar .manage-lists .new-lists .new-area p,
+.sidebar .manage-lists .new-lists .new-category p {
+  margin: 0;
 }
-
-.area-icon,
-.category-icon {
-    color: var(--dark-gray);
+.sidebar .manage-lists .new-lists .new-area:hover,
+.sidebar .manage-lists .new-lists .new-category:hover {
+  border-radius: 4px;
+  background: #1cb0f8;
 }
-
-.categories {
-    font-weight: normal !important;
-    font-size: 0.9rem;
-    margin: 10px 0;
-    padding: 0;
+.sidebar .manage-lists .new-lists .new-area {
+  border-top: 1px solid #4d545f;
 }
-
-.plus {
-    margin-right: 15px;
+.sidebar .manage-lists .new-lists .add-area-icon {
+  color: #5d9df5;
 }
-
-.add-list  {
-    display: flex;
-    width: 50%;
-    align-self: center;
-    justify-content: center;
-    margin: 10px 0 20px 0;
-    transition: 0.2s ease;
-    padding: 5px;
-    border: 1px solid transparent;
+.sidebar .manage-lists .new-lists .add-category-icon {
+  color: #7ad0a7;
 }
-
-.add-list:hover {
-    cursor: default;
-    border: 1px solid lightgray;
-    border-radius: 7px;
+.sidebar .manage-lists .add-list {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  margin: 10px 0 20px 0;
+  padding: 5px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
 }
-
-.manage-lists {
-    display: flex;
-    flex-direction: column;
+.sidebar .manage-lists .add-list .plus {
+  margin-right: 15px;
 }
-
-.new-lists {
-    color: white;
-    background: #2c323a;
-    align-self: center;
-    border-radius: 8px;
-    padding: 5px 20px;
-    width: 60%;
-}
-
-.new-lists p {
-    margin: 0;
-}
-
-.new-area,
-.new-category {
-    display: flex;
-    align-items: center;
-    padding: 10px 3px;
-}
-
-.new-area:hover,
-.new-category:hover {
-    border-radius: 4px;
-    background: var(--blue);
-}
-
-.new-area {
-    border-top: 1px solid #4d545f;
-}
-
-.add-area-icon {
-    color: #5d9df5;
-}
-
-.add-category-icon {
-    color: #7ad0a7;
-}
+.sidebar .manage-lists .add-list:hover {
+  cursor: default;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 7px;
+}/*# sourceMappingURL=Sidebar.css.map */

@@ -6,6 +6,7 @@ import { faStar, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { taskService } from '../../../services/taskService';
 import { TaskContext } from '../../../contexts/taskContext';
 import TaskFormCard from '../TaskFormCard/TaskFormCard';
+
 import './TaskCard.css';
 
 const TaskCard = ({ task, activeTaskId, setActiveTaskId, pageRef }) => {
@@ -46,7 +47,7 @@ const TaskCard = ({ task, activeTaskId, setActiveTaskId, pageRef }) => {
                 <TaskFormCard pageRef={pageRef} task={task} detailsOpened={detailsOpened} setDetailsOpened={setDetailsOpened}></TaskFormCard>
             }
             {!detailsOpened && 
-                <article className={task.id === activeTaskId ? "task-wrapper task-wrapper-active" : "task-wrapper"} onClick={() => setActiveTaskId(task.id)} onDoubleClick={() => setDetailsOpened(!detailsOpened)}>
+                <article className={task.id === activeTaskId ? "task-active" : "task"} onClick={() => setActiveTaskId(task.id)} onDoubleClick={() => setDetailsOpened(!detailsOpened)}>
                     <section className="task-content">
                         <article className="is-important-wrapper">
                             {task.isImportant && <FontAwesomeIcon icon={faStar} className="is-important"></FontAwesomeIcon>}

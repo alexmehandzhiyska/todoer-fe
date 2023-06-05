@@ -11,7 +11,7 @@ const TimeCategories = () => {
             {Object.entries(categoryIcons).map((category, i) => 
                 <li key={i} onClick={() => navigate(`/tasks${category[1].query}`)}>
                     <FontAwesomeIcon icon={category[1].icon} className="sidebar-icon icon" style={{color: category[1].color}}></FontAwesomeIcon>
-                    <span>{category[0]}</span>
+                    <span className="heading">{category[0]}</span>
                 </li>
             )}
         </ul>

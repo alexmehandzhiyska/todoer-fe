@@ -1,38 +1,31 @@
 .events {
-    margin-top: 2em;
-    width: 53vw;
+  width: 53vw;
+  margin-top: 2em;
+  border: none;
+  border-collapse: collapse;
 }
-
-.event-time {
-    width: 10%;
-}
-
 .events tbody {
-    text-align: left;
-    background: #f0f1f1;
+  text-align: left;
+  background-color: #f0f1f1;
 }
-
-.events td {
-    padding-left: 1em;
-    font-size: 0.9rem;
-    white-space:nowrap;
+.events tbody-time, .events tbody-title {
+  padding-left: 1em;
+  white-space: nowrap;
+  border: none;
+  border-collapse: collapse;
+  font-size: 0.9rem;
 }
-
-.events tr:first-child td {
-    padding-top: 1em;
+.events tbody .event {
+  border: none;
+  border-collapse: collapse;
 }
-
-.events tr:last-child td {
-    padding-bottom: 1em;
+.events tbody .event-time {
+  width: 10%;
+  color: #808080;
 }
-
-.events,
-.events tr,
-.events td {
-    border: none;
-    border-collapse: collapse;
+.events tbody tr:first-child td {
+  padding-top: 1em;
 }
-
-.event-time {
-    color: #808080;
-}
+.events tbody .events tr:last-child td {
+  padding-bottom: 1em;
+}/*# sourceMappingURL=Events.css.map */

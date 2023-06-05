@@ -1,56 +1,56 @@
 .task-form-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    border-radius: 5px;
-    width: 45vw;
-    margin: 2em 0;
-    box-shadow: -1px -1px 5px 5px rgba(223,224,224,0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45vw;
+  margin: 2em 0;
+  box-shadow: -1px -1px 5px 5px rgba(223, 224, 224, 0.75);
+  background-color: #ffffff;
+  border-radius: 5px;
 }
-
-.task-form {
-    padding: 1em;
-    width: 95%;
+.task-form-wrapper .task-form {
+  width: 95%;
+  padding: 1em;
 }
-
-.task-form input,
-.task-form textarea {
-    font-family: -apple-system, BlinkMacSystemFont;
-    width: 95%;
-    margin: 1em;
-    border: none;
+.task-form-wrapper .task-form input, .task-form-wrapper .task-form textarea {
+  width: 95%;
+  margin: 1em;
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont;
 }
-
-.task-form input:focus,
-.task-form textarea:focus {
-    outline: none;
-    caret-color: var(--blue);
+.task-form-wrapper .task-form input:focus, .task-form-wrapper .task-form textarea:focus {
+  outline: none;
+  caret-color: var(--blue);
 }
-
-.task-form textarea::placeholder {
-    font-family: -apple-system, BlinkMacSystemFont;
+.task-form-wrapper .task-form textarea {
+  resize: none;
+  height: 80px;
 }
-
-.task-description {
-    resize: none;
-    height: 80px;
+.task-form-wrapper .task-form textarea::-moz-placeholder {
+  font-family: -apple-system, BlinkMacSystemFont;
+}
+.task-form-wrapper .task-form textarea:-ms-input-placeholder {
+  font-family: -apple-system, BlinkMacSystemFont;
+}
+.task-form-wrapper .task-form textarea::placeholder {
+  font-family: -apple-system, BlinkMacSystemFont;
 }
 
 .task-options {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    font-size: 1.25rem;
-    padding: 0 10px 10px 0;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  font-size: 1.25rem;
+  padding: 0 10px 10px 0;
 }
 
 .bell-icon {
-    color: #858585;
+  color: #858585;
 }
 
 .due-date-calendar-wrapper {
-    width: 50px;
-    height: 50px;
-    margin-top: -1.3em;
-}
+  width: 50px;
+  height: 50px;
+  margin-top: -1.3em;
+}/*# sourceMappingURL=TaskFormCard.css.map */

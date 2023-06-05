@@ -1,0 +1,48 @@
+@import '../../variables';
+@import '../../mixins';
+
+.home-wrapper {
+    @include vertical-list(space-between);
+    min-width: 85vw;
+    min-height: 93vh;
+
+    .home-content {
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            font: {
+                size: 1.5rem;
+            }
+
+            .title {
+                text: {
+                    transform: capitalize;
+                }
+            }
+        }
+
+        .tasks {
+            hr {
+                height: 1px;
+                border: none;
+                background: rgb(216, 216, 216);
+            }
+
+            .completed-tasks {
+                .task-title {
+                    text: {
+                        decoration: {
+                            line: line-through;
+                            color: $tertiary-dark;
+                        }
+                    }
+                }
+    
+                input[type="checkbox"] {
+                    accent-color: darkblue;
+                    color: white;
+                }
+            }
+        }
+    }
+}

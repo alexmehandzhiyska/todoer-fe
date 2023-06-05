@@ -1,36 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/* Colors */
+/* Fonts */
 .create-wrapper {
-    width: 100vw;
-    height: 85vh;
-    margin-top: -1em;
-    padding: 0 7em;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100vw;
+  height: 85vh;
+  margin-top: -1em;
+  padding: 0 7em;
 }
-
-.create-form {
-    display: flex;
-    align-items: center;
-    font-size: 2rem;
+.create-wrapper .create-form {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
 }
-
-.create-form input {
-    font-size: 2rem;
-    border: none;
-    outline: none;
-    caret-color: var(--blue);
-    font-weight: bolder;
+.create-wrapper .create-form .added-list-icon {
+  color: #1cb0f8;
 }
-
-.added-list-icon {
-    color: var(--blue);
+.create-wrapper .create-form input {
+  border: none;
+  outline: none;
+  caret-color: #1cb0f8;
+  font-size: 2rem;
+  font-weight: bolder;
 }
-
-.add-task-instructions {
-    color: var(--dark-gray);
-    height: 80vh;
-    display: flex;
-    width: 70vw;
-    justify-content: center;
-    align-items: center;
-}
+.create-wrapper .create-form .add-task-instructions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 80vh;
+  color: #9B9B9B;
+}/*# sourceMappingURL=CreateList.css.map */

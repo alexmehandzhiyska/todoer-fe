@@ -1,0 +1,6 @@
+@mixin vertical-list($horizontal: center, $vertical: center) {
+    display: flex;
+    flex-direction: column;
+    justify-content: $horizontal;
+    align-items: $vertical;
+}

@@ -3,11 +3,12 @@ import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolder, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
-import './CreateList.css';
 import { AreaContext } from '../../contexts/areaContext';
 import { CategoryContext } from '../../contexts/categoryContext';
 import { areaService } from '../../services/areaService';
 import { categoryService } from '../../services/categoryService';
+
+import './CreateList.css';
 
 const CreateList = () => {
     const { addArea } = useContext(AreaContext);

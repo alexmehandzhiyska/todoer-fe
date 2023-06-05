@@ -1,35 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/* Colors */
+/* Fonts */
 .home-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 93vh;
-    min-width: 85vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 85vw;
+  min-height: 93vh;
 }
-
-.home-title-wrapper {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
+.home-wrapper .home-content .title-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
 }
-
-.home-title {
-    text-transform: capitalize;
+.home-wrapper .home-content .title-wrapper .title {
+  text-transform: capitalize;
 }
-
-.active-tasks {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
+.home-wrapper .home-content .tasks hr {
+  height: 1px;
+  border: none;
+  background: rgb(216, 216, 216);
 }
-
-.completed-tasks .task-title {
-    text-decoration: line-through;
-    text-decoration-color: var(--dark-gray);
+.home-wrapper .home-content .tasks .completed-tasks .task-title {
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
+  -webkit-text-decoration-color: #9B9B9B;
+          text-decoration-color: #9B9B9B;
 }
-
-.completed-tasks input[type="checkbox"] {
-    accent-color: darkblue;
-    color: white;
-}
+.home-wrapper .home-content .tasks .completed-tasks input[type=checkbox] {
+  accent-color: darkblue;
+  color: white;
+}/*# sourceMappingURL=Tasks.css.map */

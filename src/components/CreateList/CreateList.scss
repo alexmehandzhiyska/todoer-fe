@@ -1,0 +1,41 @@
+@import '../../variables';
+@import '../../mixins';
+
+.create-wrapper {
+    @include vertical-list($vertical: flex-start);
+    width: 100vw;
+    height: 85vh;
+    margin-top: -1em;
+    padding: 0 7em;
+
+    .create-form {
+        display: flex;
+        align-items: center;
+        font: {
+            size: 2rem;
+        }
+
+        .added-list-icon {
+            color: $highlight;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            caret-color: $highlight;
+            font: {
+                size: 2rem;
+                weight: bolder;
+            }
+        }
+
+        .add-task-instructions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 70vw;
+            height: 80vh;
+            color: $tertiary-dark;
+        }
+    }
+}

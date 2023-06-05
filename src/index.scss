@@ -1,0 +1,63 @@
+@import 'variables';
+
+body {
+  margin: 0;
+  font: {
+    family: $main-font;
+  }
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 100%;
+  max-width: 100vw; 
+  overflow-x: hidden;
+  background: {
+    color: $primary;
+  }
+}
+
+#content-wrapper {
+    display: flex;
+    min-width: 100%;
+}
+
+#page-wrapper {
+    align-self: center;
+    max-width: 85vw;
+}
+
+input {
+    display: block;
+    width: 100%;
+    border: none;
+    background: {
+        color: transparent;
+    }
+}
+
+input:focus {
+    outline: none;
+}
+
+input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    border: {
+        radius: 2px;
+    }
+}
+
+.title, .heading {
+    font: {
+        family: $title-font;
+    }
+}
+
+.text {
+    text: {
+        align: left;
+    }
+}
+
+.icon {
+    margin-right: 12px;
+}
