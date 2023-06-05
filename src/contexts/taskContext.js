@@ -52,10 +52,10 @@ export const TaskProvider = ({ children }) => {
         }
     };
 
-    const editTask = (task, day) => {
+    const editTask = (task, day, category) => {
         dispatch({
             type: 'EDIT_TASK',
-            payload: task
+            payload: {...task, category}
         });
 
         if (day) {

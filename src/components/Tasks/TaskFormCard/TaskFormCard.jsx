@@ -22,25 +22,26 @@ const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
 
     const taskFormRef = useRef(null);
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState(categories[0].name);
-    const [isImportant, setIsImportant] = useState(false);
-    const [isUrgent, setIsUrgent] = useState(false);
-    const [dueDate, setDueDate] = useState(null);
+    const [title, setTitle] = useState(task?.title || '');
+    const [description, setDescription] = useState(task?.description || '');
+    const [category, setCategory] = useState(task?.category || categories[0].name);
+    const [isImportant, setIsImportant] = useState(task?.isImportant || false);
+    const [isUrgent, setIsUrgent] = useState(task?.isUrgent || false);
+    const [dueDate, setDueDate] = useState(task?.dueDate || null);
     const [datePickerOpen, setDatePickerOpen] = useState(false);
 
     const selectDate = (date) => {
+        console.log(date);
         setDueDate(date);
         setDatePickerOpen(false);
     };
     
     const taskHandler = () => {
         if (task) {
-            taskService.updateOne({ id: task.id, title, description, category, isUrgent, isImportant })
+            taskService.updateOne({ id: task.id, title, description, category, isUrgent, isImportant, dueDate })
                 .then((res) => {
                     setDetailsOpened(false);
-                    editTask(res, day, category)
+                    editTask(res, day, category);
                 })
                 .catch(err => {
                     console.log(err);
