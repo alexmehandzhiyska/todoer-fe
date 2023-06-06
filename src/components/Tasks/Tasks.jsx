@@ -76,7 +76,7 @@ const Tasks = () => {
                 }
             </article>
             
-            <article id="home-settings">
+            <article className="home-settings">
                 <p onClick={() => setNewCardAdded(true)}>+</p>
             </article>
         </section>

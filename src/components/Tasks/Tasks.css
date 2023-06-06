@@ -31,4 +31,10 @@
 .home-wrapper .home-content .tasks .completed-tasks input[type=checkbox] {
   accent-color: darkblue;
   color: white;
+}
+.home-wrapper .home-settings {
+  position: fixed;
+  width: 85vw;
+  bottom: 0;
+  background-color: #f9fafb;
 }/*# sourceMappingURL=Tasks.css.map */

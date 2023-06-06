@@ -31,7 +31,6 @@ const TaskFormCard = ({ pageRef, task, setDetailsOpened }) => {
     const [datePickerOpen, setDatePickerOpen] = useState(false);
 
     const selectDate = (date) => {
-        console.log(date);
         setDueDate(date);
         setDatePickerOpen(false);
     };

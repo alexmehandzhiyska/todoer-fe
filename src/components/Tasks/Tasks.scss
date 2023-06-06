@@ -45,4 +45,13 @@
             }
         }
     }
+
+    .home-settings {
+        position: fixed;
+        width: 85vw;
+        bottom: 0;
+        background: {
+            color: $primary;
+        }
+    }
 }
