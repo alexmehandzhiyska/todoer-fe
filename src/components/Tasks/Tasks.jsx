@@ -1,6 +1,8 @@
 import { useState, useRef, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 import GoogleLogin from 'react-google-login';
 
@@ -17,6 +19,7 @@ import './Tasks.css';
 const Tasks = () => {
     const [activeTaskId, setActiveTaskId] = useState(0);
     const [newCardAdded, setNewCardAdded] = useState(false);
+    const [allCompletedShown, setAllCompletedShown] = useState(false);
     const [googleToken, setGoogleToken] = useState(localStorage.getItem('google_token'));
 
     const [searchParams] = useSearchParams();
@@ -68,7 +71,9 @@ const Tasks = () => {
                                 <hr />
 
                                 <section className="completed-tasks">
-                                    {tasks.filter(task => task.completed === true).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                                    {tasks.filter(task => task.completed === true).slice(0, 5).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
+                                    {!allCompletedShown && <p className="more-completed"><FontAwesomeIcon icon={faChevronRight} className="more-completed-icon" onClick={() => setAllCompletedShown(!allCompletedShown)}></FontAwesomeIcon> {tasks.filter(task => task.completed === true).length - 5} more completed tasks...</p>}
+                                    {allCompletedShown && tasks.filter(task => task.completed === true).slice(5).map(task => <TaskCard key={task.id} task={task} activeTaskId={activeTaskId} setActiveTaskId={setActiveTaskId} pageRef={pageRef}></TaskCard>)}
                                 </section>
                             </>
                         }

@@ -42,6 +42,34 @@
                     accent-color: darkblue;
                     color: white;
                 }
+
+                .more-completed {
+                    color: $tertiary-dark;
+                    position: relative;
+
+                    .more-completed-icon {
+                        margin-right: 10px;
+                    }
+                }
+
+                .more-completed:before,
+                .more-completed:after {
+                    content: "";
+                    display: block;
+                    width: 30%;
+                    height: 1px;
+                    background: rgb(216, 216, 216);
+                    top: 50%;
+                    position: absolute;
+                }
+                
+                .more-completed:before {
+                    left: 0;
+                }
+
+                .more-completed:after {
+                    right: 0;
+                }
             }
         }
     }

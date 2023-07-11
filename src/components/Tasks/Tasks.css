@@ -32,6 +32,29 @@
   accent-color: darkblue;
   color: white;
 }
+.home-wrapper .home-content .tasks .completed-tasks .more-completed {
+  color: #9B9B9B;
+  position: relative;
+}
+.home-wrapper .home-content .tasks .completed-tasks .more-completed .more-completed-icon {
+  margin-right: 10px;
+}
+.home-wrapper .home-content .tasks .completed-tasks .more-completed:before,
+.home-wrapper .home-content .tasks .completed-tasks .more-completed:after {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 1px;
+  background: rgb(216, 216, 216);
+  top: 50%;
+  position: absolute;
+}
+.home-wrapper .home-content .tasks .completed-tasks .more-completed:before {
+  left: 0;
+}
+.home-wrapper .home-content .tasks .completed-tasks .more-completed:after {
+  right: 0;
+}
 .home-wrapper .home-settings {
   position: fixed;
   width: 85vw;
